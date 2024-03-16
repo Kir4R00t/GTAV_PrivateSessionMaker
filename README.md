@@ -7,7 +7,7 @@ players from the session.)_
 
 ### Steps:
 
-1. Download [GTAV_PSM.zip](./GTAV_PSM.zip)
+1. Download [GTAV_PSM.zip](https://github.com/Kir4R00t/GTAV_PrivateSessionMaker/raw/main/GTAV_PSM.zip)
 2. Run GTAV_PSM.exe
 3. Click
 4. $$$

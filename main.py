@@ -3,6 +3,8 @@ from time import sleep
 import psutil
 
 
+# TODO: add loading bar for gen z users
+
 # Suspending game process, thus "kicking" all players from your session
 def privatesessionmaker():
     p_name = "GTA5.exe"

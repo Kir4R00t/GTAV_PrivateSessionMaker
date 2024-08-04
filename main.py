@@ -1,9 +1,17 @@
 from tkinter import *
+from tkinter import ttk
 from time import sleep
 import psutil
 
+# Initializing window GUI
+root = Tk()
+root.title('Private Session Maker')
+root.iconbitmap('gta 5.ico')
+height = 140
+width = 500
+x = (root.winfo_screenwidth() // 2) - (width // 2)
+y = (root.winfo_screenheight() // 2) - (height // 2)
 
-# TODO: add loading bar for gen z users
 
 # Suspending game process, thus "kicking" all players from your session
 def privatesessionmaker():
@@ -17,36 +25,26 @@ def privatesessionmaker():
 
     p = psutil.Process(pid)
     p.suspend()
-    sleep(10)
+    for i in range(10):
+        progress['value'] += 10
+        root.update_idletasks()
+        sleep(1)
     p.resume()
-
-
-def click():
     button.config(state="disabled", text="    Everything is Done :)    ")
-    privatesessionmaker()
 
 
-window = Tk()
-window.title('Private Session Maker')
-window.iconbitmap('gta 5.ico')
+# Create a style for the progress bar to increase its height
+style = ttk.Style(root)
+style.configure("TProgressbar", thickness=30)
 
-height = 100
-width = 640
-x = (window.winfo_screenwidth() // 2) - (width // 2)
-y = (window.winfo_screenheight() // 2) - (height // 2)
+# Enlarged progress bar
+progress = ttk.Progressbar(root, orient=HORIZONTAL, length=400, mode='determinate', style="TProgressbar")
+progress.pack(pady=20)
 
 # Button
-button = Button(window,
-                text="Click and wait 10 seconds",
-                command=click,
-                font=("Comic Sans", 40),
-                fg="#00FF00",
-                bg="black",
-                activeforeground="#00FF00",
-                activebackground="black",
-                state=ACTIVE,
-                compound='bottom')
+button = Button(root, text="Create a private session", command=privatesessionmaker, font=("Comic Sans", 14), pady=10,
+                state=ACTIVE)
 button.pack()
 
-window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
-window.mainloop()
+root.geometry('{}x{}+{}+{}'.format(width, height, x, y))
+root.mainloop()
